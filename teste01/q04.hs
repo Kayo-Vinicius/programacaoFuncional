@@ -1,4 +1,5 @@
-{-Funcionando-}
+--FUNCIONANDO
+
 padovan::Int->Int
 padovan n
   |n==0 = 1
