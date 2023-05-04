@@ -1,4 +1,5 @@
-{-Funcionando-}
+--FUNCIONANDO
+
 fatorial :: Int->Int
 fatorial n
   |n==0 = 1
