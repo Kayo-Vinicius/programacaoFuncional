@@ -1,8 +1,5 @@
-qtdPrimoGemeo::Int->Int
-qtdPrimoGemeo n
-  |n < 3 = 0
-  |primoGemeo n (n-2) = 1 + qtdPrimoGemeo (n-1)
-  |otherwise = qtdPrimoGemeo (n-1)
+--FUNCIONANDO
+--A
 
 primoGemeo::Int->Int->Bool
 primoGemeo n1 n2

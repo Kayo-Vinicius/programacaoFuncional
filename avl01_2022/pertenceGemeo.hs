@@ -1,3 +1,6 @@
+--FUNCIONANDO
+--B
+
 pertenceGemeo::Int->Bool
 pertenceGemeo n
   |primoGemeo n (n+2) || primoGemeo n (n-2) = True

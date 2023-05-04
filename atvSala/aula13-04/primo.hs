@@ -1,3 +1,5 @@
+--FUNCIONANDO
+
 aux::Int->Int->Bool
 aux n i
    |i==1 = True
