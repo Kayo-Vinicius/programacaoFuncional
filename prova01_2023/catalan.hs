@@ -1,5 +1,3 @@
-import Control.Monad.Cont (cont)
-
 fatorial::Int->Int
 fatorial n
   |n==0 = 1
