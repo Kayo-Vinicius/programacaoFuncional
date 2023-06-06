@@ -1,5 +1,4 @@
 --FUNCIONANDO
-
 nPrimo::Int->Int
 nPrimo n = contPrimo 0 2
    where

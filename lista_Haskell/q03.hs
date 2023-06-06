@@ -1,5 +1,4 @@
 --FUNCIONANDO
-
 fibPrimo::Int->Int
 fibPrimo n = contFib 1 1
    where

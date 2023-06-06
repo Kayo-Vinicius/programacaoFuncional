@@ -1,5 +1,4 @@
 --FUNCIONANDO
-
 potencia::Int->Int->Int
 potencia x y
   |x==0 = 1

@@ -7,6 +7,7 @@ replicaChar c n
   |n==0 = []
   |otherwise = c:replicaChar c(n-1)
 
+
 inverte::[Char]->[Char]
 inverte [] = []
 inverte (cabeca:cauda) = inverte cauda ++ [cabeca]
