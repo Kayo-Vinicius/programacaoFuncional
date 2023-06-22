@@ -13,6 +13,7 @@ comprime lista final contador
 
 -- 2
 -- YOUTUBE
+ordena :: String -> [(Char, Int)]
 ordena lista = verificaIgual (analise lista)
 
 analise :: String -> [(Char, Int)]
@@ -75,8 +76,6 @@ contador item lista
     | length lista == 0 = 0
     | item /= head lista = 0
     | otherwise = 1 + contador item (tail lista)
---    | head lista == item = 1 + contador item (tail lista)
---    | otherwise = contador item (tail lista)
 
 organizador :: Ord a => [a] -> [(a, Int)]
 organizador lista = quickSort (organizadorAUX lista (head lista) 1)
@@ -94,3 +93,84 @@ quickSort (x:xs) =
     let smallerSorted = quickSort [a | a <- xs, a <= x]
         biggerSorted = quickSort [a | a <- xs, a > x]
     in smallerSorted ++ [x] ++ biggerSorted
+
+--Questão 1
+-- comprimir :: String -> String
+-- comprimir "" = ""
+-- comprimir (x : xs)
+--   | xs == [] = [x]
+--   | x /= head xs = x : (comprimir xs)
+--   | otherwise = x : (show cont) ++ comprimir (drop cont (x : xs))
+--   where
+--     cont = contaIguaisInicio x (x : xs)
+
+-- contaIguaisInicio :: Char -> String -> Int
+-- contaIguaisInicio _ [] = 0
+-- contaIguaisInicio c (x : xs)
+--   | c == x = 1 + contaIguaisInicio c xs
+--   | otherwise = 0
+
+-- 01
+-- POLIMORFICA
+
+comprimir :: (Eq a, Show a) => [a] -> [a]
+comprimir [] = []
+comprimir (x : xs)
+  | xs == [] = [x]
+  | x /= head xs = x : comprimir xs
+  | otherwise = x : show cont ++ comprimir (drop cont (x : xs)) -- "drop" remove do inicio da lista
+  where
+    cont = contaIguaisInicio x (x : xs)
+    --contStr = show cont
+
+contaIguaisInicio :: (Eq a, Show a) => a -> [a] -> Int
+contaIguaisInicio _ [] = 0
+contaIguaisInicio c (x : xs)
+  | c == x = 1 + contaIguaisInicio c xs
+  | otherwise = 0
+
+-- "drop" remove do inicio da lista
+-- "take" remove do final da lista
+
+--Questao 2
+-- comprimir :: (Eq t, Show t) => [t] -> String
+-- comprimir [] = []
+-- comprimir (x : xs)
+--   | xs == [] = show x
+--   | x /= head xs = (show x) ++ (comprimir xs)
+--   | otherwise = (show x) ++ (show cont) ++ comprimir (drop cont (x : xs))
+--   where
+--     cont = contaIguaisInicio x (x : xs)
+
+-- contaIguaisInicio :: Eq t => t -> [t] -> Int
+-- contaIguaisInicio _ [] = 0
+-- contaIguaisInicio c (x : xs)
+--   | c == x = 1 + contaIguaisInicio c xs
+--   | otherwise = 0
+
+-- tuplasRepeticao :: Eq t => [t] -> [(t, Int)]
+-- tuplasRepeticao [] = []
+-- tuplasRepeticao (x : xs)
+--   | xs == [] = [(x, 1)]
+--   | x /= head xs = (x, 1) : (tuplasRepeticao xs)
+--   | otherwise = (x, cont) : (tuplasRepeticao (drop cont (x : xs)))
+--   where
+--     cont = contaIguaisInicio x (x : xs)
+
+-- filtroTuplas :: Eq t => t -> [(t, Int)] -> [(t, Int)]
+-- filtroTuplas elem lista = [(e, n) | (e, n) <- lista, e == elem]
+
+-- ordemAparicao :: Eq t => [t] -> [t]
+-- ordemAparicao [] = []
+-- ordemAparicao (x : xs) = [x] ++ ordemAparicao [e|e<-xs,e/=x]    
+
+-- resultado::Eq t=>[t]->[(t,Int)]
+-- resultado lista = concat [filtroTuplas ele tuplas|ele<-(ordemAparicao lista)]
+--   where
+--     tuplas =  tuplasRepeticao lista
+
+-- tuplasRepeticao "a" -> [('a',1)]
+
+-- tuplasRepeticao "abc" -> [('a',1),('b',1),('c',1)]
+
+-- tuplasRepeticao "aaaabc" -> [('a',4),('b',1),('c',1)]

@@ -16,9 +16,9 @@ contar texto caractere
 -- FUNCIONANDO
 compara::(Ord a, Ord b) => (a, b) -> (a,b) -> Ordering
 compara (a1,b1) (a2,b2)
-  | b1 < b2 = GT
-  | b1 == b2 = EQ
-  | otherwise = LT
+  | b1 < b2 = GT -- significa que b2 é maior que b1
+  | b1 == b2 = EQ -- significa que eles são iguais
+  | otherwise = LT -- significa que b2 é menor que b1
 
 ordena::String->String
 ordena lista = elimina (imprimeCabeca (sortBy compara (analise lista))) ""
