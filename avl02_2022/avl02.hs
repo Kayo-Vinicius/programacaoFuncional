@@ -25,6 +25,7 @@ contar texto caractere
   | caractere == head texto = 1 + contar (tail texto) caractere
   | otherwise = contar (tail texto) caractere
 
+
 verificaIgual::[(Char,Int)]->[(Char,Int)]
 verificaIgual lista 
     |length lista == 0 = []
